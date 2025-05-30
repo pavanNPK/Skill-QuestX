@@ -1,0 +1,279 @@
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+// Also force scroll to top as early as possible
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+// Toggle "open" class on hamburger click
+document.addEventListener("DOMContentLoaded", function () {
+    const toggler = document.querySelector(".custom-toggler");
+    toggler.addEventListener("click", function () {
+        this.classList.toggle("open");
+    });
+    // Optional: Auto-play carousel with custom timing
+    ['#carouselExampleIndicators', '#carouselExampleSetSectionIndicators'].forEach(id => {
+        new bootstrap.Carousel(document.querySelector(id), {
+            interval: 3000,
+            wrap: true,
+            pause: false
+        });
+    });
+    loadSetSectionImg('instructors', 'Certified Instructors & Mentors', 0);
+    renderCourses();
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+});
+// Get the button
+let scrollToTopButton = document.getElementById("scrollToTop");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopButton.style.display = "block";
+        scrollToTopButton.style.opacity = "100%";
+    } else {
+        scrollToTopButton.style.display = "none";
+        scrollToTopButton.style.opacity = "0";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+scrollToTopButton.addEventListener("click", function() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+});
+//this is for navbar
+let disableScrollHighlight = false;
+
+document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Disable scroll highlight temporarily
+        disableScrollHighlight = true;
+        setTimeout(() => disableScrollHighlight = false, 1000); // Adjust if needed
+
+        // Remove active from all and add to clicked
+        document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+
+        const targetId = this.getAttribute("href").slice(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const offset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    });
+});
+
+window.addEventListener("scroll", () => {
+    if (disableScrollHighlight) return;
+
+    const offset = 85;
+    const navSections = [
+        'whoWeAreSection',
+        'courseSection',
+        'corporateSection',
+        'carrierSection'
+    ];
+
+    const links = document.querySelectorAll(".nav-link");
+    let currentId = "";
+    let scrollPosition = window.scrollY + offset + 1;
+
+    // Check each navigation section
+    navSections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const top = section.offsetTop;
+            const bottom = top + section.offsetHeight;
+
+            if (scrollPosition >= top && scrollPosition < bottom) {
+                currentId = sectionId;
+            }
+        }
+    });
+
+    // Handle case when at bottom of page
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        currentId = navSections[navSections.length - 1];
+    }
+
+    // Update active nav link
+    links.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentId}`) {
+            link.classList.add("active");
+        }
+    });
+});
+
+
+
+//this is for set section
+let setSectionCount = 0;
+let data = {
+    "instructors": "Certified Instructors & Mentors",
+    "projects": "Real-World Projects",
+    "support": "Resume & Interview Support",
+    "placements": "Job Placement Assistance"
+};
+let changesetSectionLeftImage = document.querySelector("#setSectionLeftArrow");
+let changesetSectionRightImage = document.querySelector("#setSectionRightArrow");
+function loadSetSectionImg(type, text, index) {
+    const img = document.querySelector("#loadSetsSectionImg");
+    const setImgText = document.querySelector("#setImgText");
+    const targetCard = document.querySelector(`#${type}`);
+    const allCards = document.querySelectorAll(".set-card");
+
+    // Remove all card highlights
+    allCards.forEach(el => el.classList.remove("set-card-active"));
+    targetCard.classList.add("set-card-active");
+
+    // Animate image fade-out
+    img.classList.remove("fade-in");
+    img.classList.add("fade-out");
+
+    // Wait for fade-out to complete before changing image and fading back in
+    setTimeout(() => {
+        img.src = `assets/images/sets-us-apart/${type}.svg`;
+        img.classList.remove("fade-out");
+        img.classList.add("fade-in");
+    }, 100); // Slightly less than the animation duration
+
+    // Set heading text
+    setImgText.innerText = text;
+
+    // Update counter and arrows
+    setSectionCount = index;
+    changesetSectionLeftImage.src = index === 0 ? "assets/images/icons/left-arrow.svg" : "assets/images/icons/left-arrow-o.svg";
+    changesetSectionRightImage.src = index === 3 ? "assets/images/icons/right-arrow.svg" : "assets/images/icons/right-arrow-o.svg";
+}
+function leftSetSectionArrowClick() {
+    if (setSectionCount > 0) {
+        setSectionCount -= 1;
+        changesetSectionRightImage.src = "assets/images/icons/right-arrow-o.svg";
+        changesetSectionLeftImage.src = setSectionCount === 0 ? "assets/images/icons/left-arrow.svg" : "assets/images/icons/left-arrow-o.svg";
+        loadSetSectionImg(Object.keys(data)[setSectionCount], Object.values(data)[setSectionCount], setSectionCount);
+    }
+}
+function rightSetSectionArrowClick() {
+    if (setSectionCount < 3) {
+        setSectionCount += 1;
+        changesetSectionLeftImage.src = "assets/images/icons/left-arrow-o.svg";
+        changesetSectionRightImage.src = setSectionCount === 3 ? "assets/images/icons/right-arrow.svg" : "assets/images/icons/right-arrow-o.svg";
+        loadSetSectionImg(Object.keys(data)[setSectionCount], Object.values(data)[setSectionCount], setSectionCount);
+    }
+}
+
+//this is for course section
+let courseSectionCount = 0;
+let courseData = [
+    {
+        type: "Cloud & DevOps",
+        text: "AWS, Azure, Terraform, Docker, Kubernetes (With Linux / Windows)",
+        img: "assets/images/courses/cloud.svg"
+    },
+    {
+        type: "Software Development",
+        text: "Full Stack - MEAN, MERN, Java, Python",
+        img: "assets/images/courses/software-development.svg"
+    },
+    {
+        type: "Data & Analytics",
+        text: "Data Science, Power BI, AI/ML",
+        img: "assets/images/courses/data-analysis.svg"
+    },
+    {
+        type: "Service Management",
+        text: "ServiceNow, ITIL, Incident Management",
+        img: "assets/images/courses/service-management.svg"
+    },
+    {
+        type: "ERP & CRM",
+        text: "Salesforce, SAP FICO/MM/ABAP/HANA/COP",
+        img: "assets/images/courses/erp-crm.svg"
+    },
+    {
+        type: "Automation & QA",
+        text: "Selenium, JMeter, Test Automation",
+        img: "assets/images/courses/automation.svg"
+    }
+]
+let leftCourseArrow = document.querySelector("#courseLeftArrow");
+let rightCourseArrow = document.querySelector("#courseRightArrow");
+const cardsPerPage = () => {
+    if (window.innerWidth >= 992) return 3; // Large (lg)
+    if (window.innerWidth >= 768) return 2; // Medium (md)
+    return 1; // Small (sm)
+};
+
+function renderCourses() {
+    const container = document.getElementById("courseCardsContainer");
+    container.innerHTML = "";
+
+    const count = cardsPerPage();
+    const start = courseSectionCount * count;
+    const end = start + count;
+    const visibleCourses = courseData.slice(start, end);
+
+    visibleCourses.forEach((course, index) => {
+        const col = document.createElement("div");
+        col.className = `col-12 col-md-6 col-lg-4`;
+
+        const card = document.createElement("div");
+        card.className = "course-card h-100 animate-slide-in"; // Animation class
+
+        card.innerHTML = `
+            <img src="${course.img}" alt="${course.type}" />
+            <h5 class="fw-bold">${course.type}</h5>
+            <p class="mb-0 small">${course.text}</p>
+        `;
+
+        col.appendChild(card);
+        container.appendChild(col);
+
+        // Optional: staggered animation (delay per card)
+        card.style.animationDelay = `${index * 100}ms`;
+    });
+
+    // Update arrows
+    leftCourseArrow.src = courseSectionCount === 0
+        ? "assets/images/icons/left-arrow.svg"
+        : "assets/images/icons/left-arrow-o.svg";
+
+    const totalPages = Math.ceil(courseData.length / count);
+    rightCourseArrow.src = courseSectionCount >= totalPages - 1
+        ? "assets/images/icons/right-arrow.svg"
+        : "assets/images/icons/right-arrow-o.svg";
+}
+
+function leftCoursesArrowClick() {
+    if (courseSectionCount > 0) {
+        courseSectionCount--;
+        renderCourses();
+    }
+}
+
+function rightCoursesArrowClick() {
+    const maxPages = Math.ceil(courseData.length / cardsPerPage()) - 1;
+    if (courseSectionCount < maxPages) {
+        courseSectionCount++;
+        renderCourses();
+    }
+}
+
+// Re-render on resize
+window.addEventListener("resize", () => {
+    courseSectionCount = 0; // Reset to first page
+    renderCourses();
+});
