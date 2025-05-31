@@ -197,7 +197,7 @@ function loadSetSectionImg(type, text, index) {
 
     // Wait for fade-out to complete before changing image and fading back in
     setTimeout(() => {
-        img.src = `assets/images/sets-us-apart/${type}.svg`;
+        img.src = `.assets/images/sets-us-apart/${type}.svg`;
         img.classList.remove("fade-out");
         img.classList.add("fade-in");
     }, 100); // Slightly less than the animation duration
@@ -207,22 +207,22 @@ function loadSetSectionImg(type, text, index) {
 
     // Update counter and arrows
     setSectionCount = index;
-    changesetSectionLeftImage.src = index === 0 ? "assets/images/icons/left-arrow.svg" : "assets/images/icons/left-arrow-o.svg";
-    changesetSectionRightImage.src = index === 3 ? "assets/images/icons/right-arrow.svg" : "assets/images/icons/right-arrow-o.svg";
+    changesetSectionLeftImage.src = index === 0 ? ".assets/images/icons/left-arrow.svg" : ".assets/images/icons/left-arrow-o.svg";
+    changesetSectionRightImage.src = index === 3 ? ".assets/images/icons/right-arrow.svg" : ".assets/images/icons/right-arrow-o.svg";
 }
 function leftSetSectionArrowClick() {
     if (setSectionCount > 0) {
         setSectionCount -= 1;
-        changesetSectionRightImage.src = "assets/images/icons/right-arrow-o.svg";
-        changesetSectionLeftImage.src = setSectionCount === 0 ? "assets/images/icons/left-arrow.svg" : "assets/images/icons/left-arrow-o.svg";
+        changesetSectionRightImage.src = ".assets/images/icons/right-arrow-o.svg";
+        changesetSectionLeftImage.src = setSectionCount === 0 ? ".assets/images/icons/left-arrow.svg" : ".assets/images/icons/left-arrow-o.svg";
         loadSetSectionImg(Object.keys(data)[setSectionCount], Object.values(data)[setSectionCount], setSectionCount);
     }
 }
 function rightSetSectionArrowClick() {
     if (setSectionCount < 3) {
         setSectionCount += 1;
-        changesetSectionLeftImage.src = "assets/images/icons/left-arrow-o.svg";
-        changesetSectionRightImage.src = setSectionCount === 3 ? "assets/images/icons/right-arrow.svg" : "assets/images/icons/right-arrow-o.svg";
+        changesetSectionLeftImage.src = ".assets/images/icons/left-arrow-o.svg";
+        changesetSectionRightImage.src = setSectionCount === 3 ? ".assets/images/icons/right-arrow.svg" : ".assets/images/icons/right-arrow-o.svg";
         loadSetSectionImg(Object.keys(data)[setSectionCount], Object.values(data)[setSectionCount], setSectionCount);
     }
 }
@@ -233,32 +233,32 @@ let courseData = [
     {
         type: "Cloud & DevOps",
         text: "AWS, Azure, Terraform, Docker, Kubernetes (With Linux / Windows)",
-        img: "assets/images/courses/cloud.svg"
+        img: ".assets/images/courses/cloud.svg"
     },
     {
         type: "Software Development",
         text: "Full Stack - MEAN, MERN, Java, Python",
-        img: "assets/images/courses/software-development.svg"
+        img: ".assets/images/courses/software-development.svg"
     },
     {
         type: "Data & Analytics",
         text: "Data Science, Power BI, AI/ML",
-        img: "assets/images/courses/data-analysis.svg"
+        img: ".assets/images/courses/data-analysis.svg"
     },
     {
         type: "Service Management",
         text: "ServiceNow, ITIL, Incident Management",
-        img: "assets/images/courses/service-management.svg"
+        img: ".assets/images/courses/service-management.svg"
     },
     {
         type: "ERP & CRM",
         text: "Salesforce, SAP FICO/MM/ABAP/HANA/COP",
-        img: "assets/images/courses/erp-crm.svg"
+        img: ".assets/images/courses/erp-crm.svg"
     },
     {
         type: "Automation & QA",
         text: "Selenium, JMeter, Test Automation",
-        img: "assets/images/courses/automation.svg"
+        img: ".assets/images/courses/automation.svg"
     }
 ]
 let leftCourseArrow = document.querySelector("#courseLeftArrow");
@@ -300,13 +300,13 @@ function renderCourses() {
 
     // Update arrows
     leftCourseArrow.src = courseSectionCount === 0
-        ? "assets/images/icons/left-arrow.svg"
-        : "assets/images/icons/left-arrow-o.svg";
+        ? ".assets/images/icons/left-arrow.svg"
+        : ".assets/images/icons/left-arrow-o.svg";
 
     const totalPages = Math.ceil(courseData.length / count);
     rightCourseArrow.src = courseSectionCount >= totalPages - 1
-        ? "assets/images/icons/right-arrow.svg"
-        : "assets/images/icons/right-arrow-o.svg";
+        ? ".assets/images/icons/right-arrow.svg"
+        : ".assets/images/icons/right-arrow-o.svg";
 }
 
 function leftCoursesArrowClick() {

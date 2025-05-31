@@ -1,27 +1,27 @@
 /* Font Definitions */
 @font-face {
     font-family: 'Sen';
-    src: url('assets/fonts/Sen-Regular.ttf') format('truetype');
+    src: url('./assets/fonts/Sen-Regular.ttf') format('truetype');
     font-weight: 400;
 }
 @font-face {
     font-family: 'Sen';
-    src: url('assets/fonts/Sen-Medium.ttf') format('truetype');
+    src: url('./assets/fonts/Sen-Medium.ttf') format('truetype');
     font-weight: 500;
 }
 @font-face {
     font-family: 'Sen';
-    src: url('assets/fonts/Sen-SemiBold.ttf') format('truetype');
+    src: url('./assets/fonts/Sen-SemiBold.ttf') format('truetype');
     font-weight: 600;
 }
 @font-face {
     font-family: 'Sen';
-    src: url('assets/fonts/Sen-Bold.ttf') format('truetype');
+    src: url('./assets/fonts/Sen-Bold.ttf') format('truetype');
     font-weight: 700;
 }
 @font-face {
     font-family: 'Sen';
-    src: url('assets/fonts/Sen-ExtraBold.ttf') format('truetype');
+    src: url('./assets/fonts/Sen-ExtraBold.ttf') format('truetype');
     font-weight: 800;
 }
 body {
@@ -438,7 +438,7 @@ header.sticky-top {
     background-color: #6730DE;
     color: #ffffff;
     padding: 2rem 5rem;
-    background-image: url("assets/images/core/footer-bg.svg");
+    background-image: url("./assets/images/core/footer-bg.svg");
     background-position: right;
     background-repeat: no-repeat;
 }
