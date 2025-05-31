@@ -73,7 +73,7 @@ img, a {
     z-index: 9999;
 }
 .scroll-to-top:hover {
-    background-color: #5625c6;
+    background-color: #6730DE;
 }
 .scroll-to-top::before {
     content: "Jump";
