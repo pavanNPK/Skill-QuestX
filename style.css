@@ -53,6 +53,22 @@ img, a {
     from { opacity: 1; }
     to { opacity: 0; }
 }
+/* Prevent dark mode overriding */
+.no-dark-mode {
+    background-color: #ffffff !important;
+}
+
+/* Prevent button inheriting dark mode */
+.no-dark-mode button {
+    background-color: #ffffff !important;
+    border: none;
+}
+@media (prefers-color-scheme: dark) {
+    .no-dark-mode,
+    .no-dark-mode button {
+        background-color: #ffffff !important;
+    }
+}
 .scroll-to-top, .scroll-to-top:active, .scroll-to-top:focus, .scroll-to-top:hover {
     position: fixed;
     bottom: 20px;
