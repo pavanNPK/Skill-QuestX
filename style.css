@@ -53,22 +53,39 @@ img, a {
     from { opacity: 1; }
     to { opacity: 0; }
 }
-/* Prevent dark mode overriding */
-.no-dark-mode {
+/* Force white background in all modes */
+a.no-dark-mode {
     background-color: #ffffff !important;
 }
 
-/* Prevent button inheriting dark mode */
-.no-dark-mode button {
+a.no-dark-mode button.btn.brand-color {
     background-color: #ffffff !important;
-    border: none;
+    color: #6730DE !important;
+    border: none !important;
+    box-shadow: none !important; /* In case there is shadow adding color */
 }
+
+/* Also cover hover/focus states */
+a.no-dark-mode button.btn.brand-color:hover,
+a.no-dark-mode button.btn.brand-color:focus {
+    background-color: #ffffff !important;
+    color: #6730DE !important;
+    box-shadow: none !important;
+}
+
+/* Force white in dark mode too */
 @media (prefers-color-scheme: dark) {
-    .no-dark-mode,
-    .no-dark-mode button {
+    a.no-dark-mode,
+    a.no-dark-mode button.btn.brand-color,
+    a.no-dark-mode button.btn.brand-color:hover,
+    a.no-dark-mode button.btn.brand-color:focus {
         background-color: #ffffff !important;
+        color: #6730DE !important;
+        box-shadow: none !important;
     }
 }
+
+
 .scroll-to-top, .scroll-to-top:active, .scroll-to-top:focus, .scroll-to-top:hover {
     position: fixed;
     bottom: 20px;
