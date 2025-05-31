@@ -54,37 +54,16 @@ img, a {
     to { opacity: 0; }
 }
 /* Force white background in all modes */
-a.no-dark-mode {
-    background-color: #ffffff !important;
+.no-dark-mode {
+    color-scheme: light !important;
+    background-color: #fff !important;
 }
-
-a.no-dark-mode button.btn.brand-color {
-    background-color: #ffffff !important;
+.no-dark-mode button {
+    background-color: #fff !important;
     color: #6730DE !important;
     border: none !important;
-    box-shadow: none !important; /* In case there is shadow adding color */
-}
-
-/* Also cover hover/focus states */
-a.no-dark-mode button.btn.brand-color:hover,
-a.no-dark-mode button.btn.brand-color:focus {
-    background-color: #ffffff !important;
-    color: #6730DE !important;
     box-shadow: none !important;
 }
-
-/* Force white in dark mode too */
-@media (prefers-color-scheme: dark) {
-    a.no-dark-mode,
-    a.no-dark-mode button.btn.brand-color,
-    a.no-dark-mode button.btn.brand-color:hover,
-    a.no-dark-mode button.btn.brand-color:focus {
-        background-color: #ffffff !important;
-        color: #6730DE !important;
-        box-shadow: none !important;
-    }
-}
-
 
 .scroll-to-top, .scroll-to-top:active, .scroll-to-top:focus, .scroll-to-top:hover {
     position: fixed;
@@ -235,6 +214,28 @@ header.sticky-top {
     width: fit-content;
     border-radius: 5px;
 }
+
+
+/* On small/mobile screens only: full screen height */
+@media (max-width: 767.98px) {
+    .banner-carousel-section {
+        height: 100dvh;
+    }
+    .carousel-image img {
+        width: 50vw !important;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 500px) {
+    .carousel-image img {
+        width: 70vw !important;
+        object-fit: contain;
+        margin-bottom: 3rem !important;
+    }
+}
+
+
 /* Custom Carousel Indicators (Dots) */
 .carousel-indicators {
     position: static !important;
@@ -470,7 +471,7 @@ header.sticky-top {
 .footer-section{
     background-color: #6730DE;
     color: #ffffff;
-    padding: 2rem 5rem;
+    padding: 2rem;
     background-image: url("./assets/images/core/footer-bg.svg");
     background-position: right;
     background-repeat: no-repeat;
