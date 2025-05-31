@@ -2,7 +2,6 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 window.scrollTo(0, 0);
-
 // Also force scroll to top as early as possible
 document.documentElement.scrollTop = 0;
 document.body.scrollTop = 0;
@@ -24,6 +23,53 @@ document.addEventListener("DOMContentLoaded", function () {
     renderCourses();
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 });
+document.addEventListener("DOMContentLoaded", function () {
+    // Disable right-click
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    });
+
+    // Disable keyboard shortcuts for inspect, save, view source, print, etc.
+    document.addEventListener("keydown", function (e) {
+        // F12
+        if (e.key === "F12") {
+            e.preventDefault();
+            return false;
+        }
+
+        // Ctrl+Shift+I/J/C/U | Ctrl+U/S/P
+        if (
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && ['U', 'S', 'P'].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Cmd+Option+I on macOS
+        if (e.metaKey && e.altKey && e.key.toUpperCase() === 'I') {
+            e.preventDefault();
+            return false;
+        }
+
+        // Cmd+U, Cmd+S, Cmd+P (macOS)
+        if (e.metaKey && ['U', 'S', 'P'].includes(e.key.toUpperCase())) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Optional: Detect DevTools and redirect or block
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function () {
+            // You can redirect or freeze here
+            window.location.replace("about:blank");
+        }
+    });
+    console.log('%c', element);
+});
+
 // Get the button
 let scrollToTopButton = document.getElementById("scrollToTop");
 
@@ -47,7 +93,6 @@ scrollToTopButton.addEventListener("click", function() {
 });
 //this is for navbar
 let disableScrollHighlight = false;
-
 document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -63,7 +108,7 @@ document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
         const targetId = this.getAttribute("href").slice(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
-            const offset = 80;
+            const offset = window.innerWidth < 992 ? 220 : 80;
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -72,9 +117,19 @@ document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
                 behavior: "smooth"
             });
         }
+        // Collapse the menu if open
+        const navbarCollapse = document.getElementById("navbarNav");
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (bsCollapse) {
+            bsCollapse.hide();
+        }
+        // hamburger icon reset
+        const toggler = document.querySelector('.custom-toggler');
+        if (toggler.classList.contains('open')) {
+            toggler.classList.remove('open');
+        }
     });
 });
-
 window.addEventListener("scroll", () => {
     if (disableScrollHighlight) return;
 
@@ -116,8 +171,6 @@ window.addEventListener("scroll", () => {
         }
     });
 });
-
-
 
 //this is for set section
 let setSectionCount = 0;
