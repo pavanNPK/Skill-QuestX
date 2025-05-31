@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.replace("about:blank");
         }
     });
-    console.log('%c', element);
 });
 
 // Get the button
