@@ -224,14 +224,12 @@ header.sticky-top {
     }
     .carousel-image img {
         object-fit: contain;
-        margin-bottom: 2rem;
     }
 }
 
 @media (max-width: 500px) {
     .carousel-image img {
         object-fit: contain;
-        margin-bottom: 3rem !important;
     }
 }
 
