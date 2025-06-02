@@ -200,8 +200,9 @@ header.sticky-top {
 }
 
 .carousel-image {
-    flex: 1;
-    text-align: center;
+    padding: 1rem;
+    /*flex: 1;*/
+    /*text-align: center;*/
 }
 
 .carousel-image img {
@@ -222,14 +223,13 @@ header.sticky-top {
         height: 100dvh;
     }
     .carousel-image img {
-        width: 50vw !important;
         object-fit: contain;
+        margin-bottom: 2rem;
     }
 }
 
 @media (max-width: 500px) {
     .carousel-image img {
-        width: 70vw !important;
         object-fit: contain;
         margin-bottom: 3rem !important;
     }
