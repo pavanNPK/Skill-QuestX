@@ -218,7 +218,7 @@ header.sticky-top {
 /* On small/mobile screens only: full screen height */
 @media (max-width: 767.98px) {
     .banner-carousel-section {
-        height: 100dvh;
+        height: 100dvh !important;
     }
     .carousel-image img {
         object-fit: contain;
@@ -366,7 +366,7 @@ header.sticky-top {
     }
 }
 #loadSetsSectionImg{
-    height: 80vh;
+    height: 80dvh !important;
     object-fit: cover;
     border-radius: 10px;
     object-position: 50% 0;
