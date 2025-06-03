@@ -201,8 +201,6 @@ header.sticky-top {
 
 .carousel-image {
     padding: 1rem;
-    /*flex: 1;*/
-    /*text-align: center;*/
 }
 
 .carousel-image img {
@@ -256,7 +254,6 @@ header.sticky-top {
 
 .carousel-indicators [data-bs-target].active {
     background-color: #6730DE !important;
-    /*transform: scale(1.2);*/
 }
 
 .carousel-indicators [data-bs-target]:hover {

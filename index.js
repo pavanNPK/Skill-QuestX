@@ -23,51 +23,51 @@ document.addEventListener("DOMContentLoaded", function () {
     renderCourses();
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 });
-document.addEventListener("DOMContentLoaded", function () {
-    // Disable right-click
-    document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-    });
-
-    // Disable keyboard shortcuts for inspect, save, view source, print, etc.
-    document.addEventListener("keydown", function (e) {
-        // F12
-        if (e.key === "F12") {
-            e.preventDefault();
-            return false;
-        }
-
-        // Ctrl+Shift+I/J/C/U | Ctrl+U/S/P
-        if (
-            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
-            (e.ctrlKey && ['U', 'S', 'P'].includes(e.key.toUpperCase()))
-        ) {
-            e.preventDefault();
-            return false;
-        }
-
-        // Cmd+Option+I on macOS
-        if (e.metaKey && e.altKey && e.key.toUpperCase() === 'I') {
-            e.preventDefault();
-            return false;
-        }
-
-        // Cmd+U, Cmd+S, Cmd+P (macOS)
-        if (e.metaKey && ['U', 'S', 'P'].includes(e.key.toUpperCase())) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // Optional: Detect DevTools and redirect or block
-    const element = new Image();
-    Object.defineProperty(element, 'id', {
-        get: function () {
-            // You can redirect or freeze here
-            window.location.replace("about:blank");
-        }
-    });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//     // Disable right-click
+//     document.addEventListener("contextmenu", function (e) {
+//         e.preventDefault();
+//     });
+//
+//     // Disable keyboard shortcuts for inspect, save, view source, print, etc.
+//     document.addEventListener("keydown", function (e) {
+//         // F12
+//         if (e.key === "F12") {
+//             e.preventDefault();
+//             return false;
+//         }
+//
+//         // Ctrl+Shift+I/J/C/U | Ctrl+U/S/P
+//         if (
+//             (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+//             (e.ctrlKey && ['U', 'S', 'P'].includes(e.key.toUpperCase()))
+//         ) {
+//             e.preventDefault();
+//             return false;
+//         }
+//
+//         // Cmd+Option+I on macOS
+//         if (e.metaKey && e.altKey && e.key.toUpperCase() === 'I') {
+//             e.preventDefault();
+//             return false;
+//         }
+//
+//         // Cmd+U, Cmd+S, Cmd+P (macOS)
+//         if (e.metaKey && ['U', 'S', 'P'].includes(e.key.toUpperCase())) {
+//             e.preventDefault();
+//             return false;
+//         }
+//     });
+//
+//     // Optional: Detect DevTools and redirect or block
+//     const element = new Image();
+//     Object.defineProperty(element, 'id', {
+//         get: function () {
+//             // You can redirect or freeze here
+//             window.location.replace("about:blank");
+//         }
+//     });
+// });
 
 // Get the button
 let scrollToTopButton = document.getElementById("scrollToTop");
