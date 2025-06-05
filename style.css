@@ -28,6 +28,13 @@ body {
     font-family: 'Sen', sans-serif;
     scroll-behavior: smooth;
 }
+p{
+    text-align: justify;
+}
+.text-align-normal{
+    text-align: unset !important;
+    font-size: 18px;
+}
 img, a {
     -webkit-user-drag: none;
     -webkit-user-select: none;

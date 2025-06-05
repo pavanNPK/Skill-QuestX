@@ -288,7 +288,7 @@ function renderCourses() {
         card.innerHTML = `
             <img src="${course.img}" alt="${course.type}" />
             <h5 class="fw-bold">${course.type}</h5>
-            <p class="mb-0 small">${course.text}</p>
+            <p class="mb-0 small text-start">${course.text}</p>
         `;
 
         col.appendChild(card);
