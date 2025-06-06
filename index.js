@@ -370,7 +370,11 @@ function submitForm(name, email, message, phone) {
             showToast("Form submitted successfully!");
             return res;
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error => {
+            console.error("Error:", error)
+            // Error message
+            showToast(error);
+        });
 }
 function showToast(message, duration = 3000) {
     const container = document.getElementById("toast-container");
