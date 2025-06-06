@@ -42,21 +42,18 @@ function sanitizeInput(obj) {
     return sanitized;
 }
 
-// ✅ Nodemailer transporter setup
+// Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
-    tls: {
-        rejectUnauthorized: false
-    },
-    secure: false, // true for 465, false for 587
+    port: process.env.MAIL_PORT, // 465
+    secure: true, // important: false for port 587
     auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS
     }
 });
 
-// 📩 Contact form route
+// Contact form route
 app.post("/contact", async (req, res) => {
     console.log(req.body);
     const { name, email, message, phone } = sanitizeInput(req.body);

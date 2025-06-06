@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadSetSectionImg('instructors', 'Certified Instructors & Mentors', 0);
     renderCourses();
     document.getElementById("currentYear").textContent = String(new Date().getFullYear());
-});
-document.addEventListener("DOMContentLoaded", function () {
+
     // Disable right-click
     document.addEventListener("contextmenu", function (e) {
         e.preventDefault();
