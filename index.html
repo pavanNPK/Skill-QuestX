@@ -5,14 +5,10 @@
     <title>SkillQuestX – Online Technical Courses & Corporate Training</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="theme-color" content="#6730DE">
-    <meta name="msapplication-navbutton-color" content="#6730DE">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#6730DE">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
-
     <meta name="google-site-verification" content="AoZOin5cHEWzmZjt0x60Qg6JP2MZOXurw9UpHwPBjlg" />
 
     <!-- SEO Meta Tags -->
@@ -39,10 +35,33 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "SkillQuestX",
+            "url": "https://www.skillquestx.com",
+            "logo": "https://www.skillquestx.com/assets/images/core/logo.svg",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "info@skillquestx.com",
+                "contactType": "Customer Support"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/SkillQuestX",
+                "https://twitter.com/SkillQuestX"
+            ]
+        }
+    </script>
+
 </head>
 
 <body>
 
+<!-- toast -->
+<div id="toast-container"></div>
+<!-- toast -->
 <!-- scroll to top button -->
 <button class="scroll-to-top" id="scrollToTop"></button>
 <!-- scroll to top button -->
@@ -73,11 +92,11 @@
                         <a class="nav-link" href="#corporateSection">Corporate Training</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#carrierSection">Career Services</a>
+                        <a class="nav-link" href="#careerSection">Career Services</a>
                     </li>
                     <li class="nav-item d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block" style="margin: auto .1rem">
-                        <a href="mailto:info@skillquestx.com">
-                            <button class="btn brand-bg carousel-button btn-sm brand-bg text-white small">Get in Touch</button>
+                        <a href="#footerSection" aria-label="Email SkillQuestX for inquiries">
+                            <button class="btn brand-bg carousel-button btn-sm brand-bg text-white small" style="background-color: #6730DE !important;">Get in Touch</button>
                         </a>
                     </li>
                 </ul>
@@ -91,7 +110,9 @@
     <div class="carousel-section banner-carousel-section" id="banner-carousel-section">
         <div class="carousel-content row m-0">
             <div class="carousel-text col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pe-0 pe-sm-0 order-1 order-sm-1 order-md-1 order-lg-0 order-xl-0">
-<!--                <h1 class="brand-color text-start mb-5">Welcome to SkillQuestX – Upskill for the Future</h1>-->
+                <h1 class="text-start fw-bold mb-4 mb-sm-5 mb-md-5 mb-lg-5 mb-xl-5">
+                    Welcome to <span class="fw-bold brand-color">SkillQuestX</span> – Upskill for the Future
+                </h1>
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <!-- Custom Dot Indicators -->
                     <div class="carousel-indicators">
@@ -102,27 +123,27 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div>
-                                <h4 class="mb-1 fw-bold">REDEFINE</h4>
+                                <h3 class="mb-1 fw-bold">REDEFINE</h3>
     <!--                            <p class="small">Transform your knowledge and career perspective</p>-->
                                 <p class="small">Boost your learning and career path</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div>
-                                <h4 class="mb-1 fw-bold">UPSKILL</h4>
+                                <h3 class="mb-1 fw-bold">UPSKILL</h3>
                                 <p class="small">Gain modern, in-demand technical expertise</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div>
-                                <h4 class="mb-1 fw-bold">SUCCEED</h4>
+                                <h3 class="mb-1 fw-bold">SUCCEED</h3>
                                 <p class="small">Land your dream role or promotion</p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-button d-flex d-block d-sm-block d-md-block d-lg-none d-xl-none">
-                        <a href="mailto:info@skillquestx.com">
-                            <button class="btn brand-bg text-white small">Get in Touch</button>
+                        <a href="#footerSection" aria-label="Email SkillQuestX for inquiries">
+                            <button class="btn brand-bg text-white small" style="background-color: #6730DE !important;">Get in Touch</button>
                         </a>
                     </div>
                 </div>
@@ -138,7 +159,7 @@
                     <!-- Medium to large screens (768px to 1199.98px) -->
                     <source srcset="./assets/images/core/banner-md.jpg" media="(min-width: 768px) and (max-width: 1199.98px)">
                     <!-- Extra large screens (1200px and up) -->
-                    <img src="./assets/images/core/banner.jpg" alt="banner" class="img-fluid" loading="lazy">
+                    <img src="./assets/images/core/banner.jpg" alt="SkillQuestX banner showcasing technical courses" class="img-fluid" loading="lazy">
                 </picture>
             </div>
         </div>
@@ -349,102 +370,144 @@
         </div>
     </div>
     <!-- end of corporate section -->
-    <!-- Carrier Section -->
-    <div class="carrier-section p-4 m-4 rounded" id="carrierSection">
+    <!-- Career Section -->
+    <div class="career-section p-4 m-4 rounded" id="careerSection">
         <div class="">
             <h4 class="m-0">
                 <img src="./assets/images/icons/pointer.svg" alt="" class="img-fluid"  loading="lazy"/>
-                <span class="fw-bold">Carrier Services</span>
+                <span class="fw-bold">career Services</span>
             </h4>
             <p class="" style="font-size: .8rem; margin-left: 1.9rem">We go beyond training.</p>
         </div>
-        <div class="row m-0" id="carrierCardsContainer">
+        <div class="row m-0" id="careerCardsContainer">
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <div class="carrier-card card">
-                    <img src="./assets/images/icons/resume-support.svg" alt="carrier" class="img-fluid" loading="lazy">
+                <div class="career-card card">
+                    <img src="./assets/images/icons/resume-support.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal">Resume Writing Support</p>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <div class="carrier-card card">
-                    <img src="./assets/images/icons/mock-interview.svg" alt="carrier" class="img-fluid" loading="lazy">
+                <div class="career-card card">
+                    <img src="./assets/images/icons/mock-interview.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal">Mock Interviews & Feedback</p>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <div class="carrier-card card">
-                    <img src="./assets/images/icons/optimization.svg" alt="carrier" class="img-fluid" loading="lazy">
+                <div class="career-card card">
+                    <img src="./assets/images/icons/optimization.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal">LinkedIn & GitHub Optimization</p>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <div class="carrier-card card">
-                    <img src="./assets/images/icons/referrals.svg" alt="carrier" class="img-fluid" loading="lazy">
+                <div class="career-card card">
+                    <img src="./assets/images/icons/referrals.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal">Interview Referrals (where applicable)</p>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                <div class="carrier-card card">
-                    <img src="./assets/images/icons/certification.svg" alt="carrier" class="img-fluid" loading="lazy">
+                <div class="career-card card">
+                    <img src="./assets/images/icons/certification.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal">Certification Guidance</p>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                <div class="carrier-card-shade card">
-                    <img src="./assets/images/icons/shade-logo.svg" alt="carrier" class="img-fluid" loading="lazy">
+                <div class="career-card-shade card">
+                    <img src="./assets/images/icons/shade-logo.svg" alt="career" class="img-fluid" loading="lazy">
                 </div>
             </div>
         </div>
     </div>
-    <!-- end of carrier section -->
+    <!-- end of career section -->
     <!-- footer section -->
-    <div class="footer-section">
+    <div class="footer-section" id="footerSection">
         <div class="row m-0">
             <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 p-0 pb-sm-4 pb-4 p-md-0 p-lg-0 p-xl-0 d-flex flex-column justify-content-between">
                 <div>
                     <h3 class="fw-bold">Have a question or want to enroll?</h3>
-                    <a href="mailto:info@skillquestx.com" class="no-dark-mode">
-                        <button
-                                class="btn small"
-                                style="background-color: #fff !important; color: #6730DE !important; border:none !important; box-shadow:none !important;">
-                            info@skillquestx.com
-                            <img src="./assets/images/icons/left.svg" alt="email" class="ms-3" loading="lazy" style="width: 1rem">
-                        </button>
-                    </a>
-                </div>
-                <div class="mt-4">
-                    <img src="./assets/images/core/logo-bg.svg" alt="footer" class="img-fluid" loading="lazy" style="width: 15rem">
+                    <form method="post" id="contactForm" class="mt-4">
+                        <div class="row">
+                            <div class="form-group col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <label for="firstName">First Name*</label>
+                                <input type="text" id="firstName" name="firstName"
+                                       class="form-control small" placeholder="Enter first name" required
+                                       pattern="^[A-Za-z]+(?: [A-Za-z]+)*$"
+                                       title="Only letters and single spaces allowed. No leading/trailing spaces."
+                                       minlength="2" maxlength="50">
+                            </div>
+                            <div class="form-group col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <label for="lastName">Last Name*</label>
+                                <input type="text" id="lastName" name="lastName"
+                                       class="form-control small" placeholder="Enter last name" required
+                                       pattern="^[A-Za-z]+(?: [A-Za-z]+)*$"
+                                       title="Only letters and single spaces allowed. No leading/trailing spaces."
+                                       minlength="1" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <label for="email">Email address*</label>
+                                <input type="email" id="email" name="email"
+                                       class="form-control" placeholder="Enter email" required
+                                       pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                                       title="Please enter a valid email address.">
+                                <small id="emailHelp" class="form-text text-white">We'll never share your email.</small>
+                            </div>
+                            <div class="form-group col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <label for="phone">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone"
+                                       class="form-control small" placeholder="Enter phone number" required
+                                       pattern="^[0-9]{10}$"
+                                       title="Phone number must be exactly 10 digits."
+                                       inputmode="numeric" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <label for="message">Message*</label>
+                                <textarea class="form-control small" id="message" rows="3" minlength="10" maxlength="300" placeholder="Write your message" name="message" required></textarea>
+                                <small id="messageHelp" class="form-text text-white"></small>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
+                                <button class="btn btn-primary bg-white brand-color small" id="submitForm" type="submit" style="color: #6730DE !important;">Submit
+                                    <img src="./assets/images/icons/left.svg" alt="email" class="ms-3" loading="lazy" style="width: 1rem">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 p-0">
                 <hr class="custom-dotted-hr d-block d-sm-block d-md-none d-lg-none d-xl-none">
                 <div>
                     <h5 class="fw-bold m-0">REDEFINE</h5>
-                    <p class="small">Transform your knowledge and career perspective</p>
+                    <p class="small text-align-no-gap">Transform your knowledge and career perspective</p>
                 </div>
                 <div>
                     <h5 class="fw-bold m-0">UPSKILL</h5>
-                    <p class="small">Gain modern, in-demand technical expertise</p>
+                    <p class="small text-align-no-gap">Gain modern, in-demand technical expertise</p>
                 </div>
                 <div>
                     <h5 class="fw-bold m-0">SUCCEED</h5>
-                    <p class="small">Land your dream role or promotion</p>
+                    <p class="small text-align-no-gap">Land your dream role or promotion</p>
                 </div>
                 <div class="p-0 pt-sm-3 pt-3 p-md-0 p-lg-0 p-xl-0">
                     <hr class="custom-dotted-hr">
                     <h5 class="fw-bold m-0">CONTACT US</h5>
-                    <p class="small m-0">
+                    <p class="small m-0 text-align-no-gap">
                         <a href="tel:+919391481020" class="phone-link">+91-9391481020</a> |
                         <a href="tel:+919666178974" class="phone-link">+91-9666178974</a>
                     </p>
-                    <p class="small m-0">
+                    <p class="small m-0 text-align-no-gap">
                         <a href="tel:+919182426357" class="phone-link">+91-9182426357</a> |
                         <a href="tel:+919292303122" class="phone-link">+91-92923 03122</a>
                     </p>
                 </div>
                 <hr class="custom-dotted-hr">
                 <div>
-                    <p class="small m-0">&copy; <span id="currentYear"></span> SkillQuestX. All rights reserved.</p>
+                    <p class="small m-0 text-align-no-gap">&copy; <span id="currentYear"></span> SkillQuestX. All rights reserved.</p>
+                </div>
+                <div class="mt-4">
+                    <img src="./assets/images/core/logo-bg.svg" alt="footer" class="img-fluid" loading="lazy" style="width: 15rem">
                 </div>
             </div>
         </div>

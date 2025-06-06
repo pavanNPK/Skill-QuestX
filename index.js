@@ -137,7 +137,8 @@ window.addEventListener("scroll", () => {
         'whoWeAreSection',
         'courseSection',
         'corporateSection',
-        'carrierSection'
+        'careerSection',
+        'footerSection'
     ];
 
     const links = document.querySelectorAll(".nav-link");
@@ -329,3 +330,62 @@ window.addEventListener("resize", () => {
     courseSectionCount = 0; // Reset to first page
     renderCourses();
 });
+
+// submit form
+const form = document.getElementById("contactForm");
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const textarea = document.getElementById("message");
+    const message = textarea.value.trim();
+    const name = firstName + " " + lastName;
+    submitForm(name, email, message, phone);
+});
+
+function submitForm(name, email, message, phone) {
+    const data = {
+        name: name,
+        email: email,
+        message: message,
+        phone: phone
+    };
+    const disableSubmitButton = document.getElementById("submitForm");
+    disableSubmitButton.disabled = true;
+    showToast("Please wait...");
+    fetch("http://localhost:3000/contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.text())
+        .then(data => {
+            form.reset();
+            disableSubmitButton.disabled = false;
+            // Example usage
+            showToast("Form submitted successfully!");
+        })
+        .catch(error => console.error("Error:", error));
+}
+function showToast(message, duration = 3000) {
+    const container = document.getElementById("toast-container");
+    const toast = document.createElement("div");
+    toast.classList.add("toast-message");
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add("show");
+    }, 10);
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => {
+            container.removeChild(toast);
+        }, 300);
+    }, duration);
+}

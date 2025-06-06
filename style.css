@@ -28,8 +28,35 @@ body {
     font-family: 'Sen', sans-serif;
     scroll-behavior: smooth;
 }
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.toast-message {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
+.toast-message.show {
+    opacity: 1; /* Show the toast */
+}
 p{
     text-align: justify;
+}
+.text-align-no-gap{
+    text-align: unset !important;
 }
 .text-align-normal{
     text-align: unset !important;
@@ -41,6 +68,10 @@ img, a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+button:hover, button:focus, button:active, button {
+    outline: none !important;
+    box-shadow: none !important;
 }
 .cursor-pointer { cursor: pointer; }
 .fade-in {
@@ -186,8 +217,10 @@ header.sticky-top {
 }
 
 /* Carousel Section Styling */
+.banner-carousel-section {
+    height: 100dvh !important;
+}
 .carousel-section {
-    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,10 +258,13 @@ header.sticky-top {
 /* On small/mobile screens only: full screen height */
 @media (max-width: 767.98px) {
     .banner-carousel-section {
-        height: 100dvh !important;
+        height: auto !important;
     }
     .carousel-image img {
         object-fit: contain;
+    }
+    .carousel-text {
+        padding: 0 1rem 2rem 1rem;
     }
 }
 
@@ -281,8 +317,7 @@ header.sticky-top {
 .carousel-item {
     text-align: left;
 }
-.carousel-item h4 {
-    font-size: 2.5rem;
+.carousel-item h3 {
     margin-bottom: 1rem;
 }
 
@@ -431,11 +466,11 @@ header.sticky-top {
         filter: brightness(0) invert(1) !important;
     }
 }
-.carrier-section{
+.career-section{
     background-color: #F8F8F8;
     padding-bottom: 5px !important;
 }
-.carrier-card {
+.career-card {
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -446,13 +481,13 @@ header.sticky-top {
     margin-bottom: 1rem;
     height: 200px;
 }
-.carrier-card img {
+.career-card img {
     width: 3rem;
 }
-.carrier-card p {
+.career-card p {
     margin: 0;
 }
-.carrier-card:hover {
+.career-card:hover {
     background-color: #6730DE !important;
     color: #ffffff !important;
     border: 1px solid #6730DE !important;
@@ -460,14 +495,14 @@ header.sticky-top {
         filter: brightness(0) invert(1) !important;
     }
 }
-.carrier-card-shade {
+.career-card-shade {
     height: 200px;
     background: #6730DE;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.carrier-card-shade img {
+.career-card-shade img {
     object-fit: contain;
 }
 .footer-section{
