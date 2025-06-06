@@ -214,3 +214,13 @@ scrollToTopButton.addEventListener("click", function () {
 | `leftSetSectionArrowClick()` / `rightSetSectionArrowClick()` | Navigate feature section          | Sequential browsing              |
 | `nav-link click handler`                                     | Smooth scroll to section          | Usability and polish             |
 | `scroll listener`                                            | Active nav update on scroll       | UX clarity and navigation aid    |
+
+-----------------------------------------------------------------------------------
+
+#### Stop uploading files to GitHub
+
+> git rm --cached server/.env (same like required path)
+> 
+> git commit -m "Stop tracking server/.env"
+> 
+> git push
