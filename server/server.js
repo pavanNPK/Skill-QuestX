@@ -60,14 +60,12 @@ const transporter = nodemailer.createTransport({
 app.post("/contact", async (req, res) => {
     console.log(req.body);
     const { name, email, message, phone } = sanitizeInput(req.body);
-    const ccList = ['pavan.narendrvarapu@thecapitalnet.com.com', 'bypavannpk@gmail.com'];
 
     try {
         await transporter.sendMail({
-            from: `"SkillQuestX Contact Form" <${process.env.MAIL_USER}>`, // ✅ your mail account (must be authenticated)
-            to: process.env.MAIL_USER, // ✅ your/team email to receive the message
-            // cc: ccList, // ✅ optional: other team members
-            replyTo: `${name} <${email}>`, // ✅ so you can reply to the user directly
+            from: `"SkillQuestX Contact Form" <${process.env.MAIL_USER}>`,
+            to: process.env.MAIL_USER,
+            replyTo: `${name} <${email}>`,
             subject: "New Contact Form Submission",
             headers: {
                 'X-Priority': '1',
@@ -130,5 +128,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running at ${process.env.APP_HOST || 'http://localhost'}:${port}`);
 });
-
-export default app;

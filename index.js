@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     loadSetSectionImg('instructors', 'Certified Instructors & Mentors', 0);
     renderCourses();
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
+    document.getElementById("currentYear").textContent = String(new Date().getFullYear());
 });
 document.addEventListener("DOMContentLoaded", function () {
     // Disable right-click
@@ -354,6 +354,7 @@ function submitForm(name, email, message, phone) {
     };
     const disableSubmitButton = document.getElementById("submitForm");
     disableSubmitButton.disabled = true;
+    // loading
     showToast("Please wait...");
     fetch("http://localhost:3000/contact", {
         method: "POST",
@@ -363,11 +364,12 @@ function submitForm(name, email, message, phone) {
         body: JSON.stringify(data)
     })
         .then(response => response.text())
-        .then(data => {
+        .then(res => {
             form.reset();
             disableSubmitButton.disabled = false;
-            // Example usage
+            // Success message
             showToast("Form submitted successfully!");
+            return res;
         })
         .catch(error => console.error("Error:", error));
 }
