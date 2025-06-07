@@ -413,6 +413,9 @@ header.sticky-top {
     border-radius: 10px;
     object-position: 50% 0;
 }
+#courseCardsContainer {
+    transition: opacity 0.1s ease;
+}
 .course-section{
     background-color: #F8F8F8;
 }
@@ -454,46 +457,65 @@ header.sticky-top {
     justify-content: space-between;
     width: 100%;
     cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.4s ease, color 0.3s ease;
+    border: 1px solid #ddd;
+    position: relative;
+    overflow: hidden;
 }
+
 .corporate-card img {
     width: 2rem;
+    transition: filter 0.4s ease;
 }
+
+.corporate-card .card-title {
+    transition: all 0.4s ease;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.corporate-card .card-description {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 2;
+    font-size: 0.95rem;
+}
+
+/* Hover Styles */
 .corporate-card:hover {
-    background-color: #6730DE !important;
-    color: #ffffff !important;
-    border: 1px solid #6730DE !important;
-    img {
-        filter: brightness(0) invert(1) !important;
-    }
+    background-color: #6730DE;
+    color: #ffffff;
+    border: 1px solid #6730DE;
 }
+
+.corporate-card:hover img {
+    opacity: 0;
+    filter: brightness(0) invert(1);
+    transform: translateY(-10px);
+}
+.corporate-card:hover .card-title {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.corporate-card:hover .card-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 .career-section{
     background-color: #F8F8F8;
     padding-bottom: 5px !important;
-}
-.career-card {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    cursor: pointer;
-    gap: 3rem;
-    margin-bottom: 1rem;
-    height: 200px;
-}
-.career-card img {
-    width: 3rem;
-}
-.career-card p {
-    margin: 0;
-}
-.career-card:hover {
-    background-color: #6730DE !important;
-    color: #ffffff !important;
-    border: 1px solid #6730DE !important;
-    img {
-        filter: brightness(0) invert(1) !important;
-    }
 }
 .career-card-shade {
     height: 200px;
@@ -502,8 +524,79 @@ header.sticky-top {
     justify-content: center;
     align-items: center;
 }
-.career-card-shade img {
-    object-fit: contain;
+.career-card {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.4s ease, color 0.3s ease;
+    cursor: pointer;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 3rem;
+    margin-bottom: 1rem;
+    height: 200px;
+    border: 1px solid #ddd;
+}
+
+.career-card img {
+    width: 3rem;
+    transition: filter 0.4s ease;
+}
+
+.career-card p {
+    margin: 0;
+}
+
+.card-title {
+    transition: all 0.4s ease;
+    z-index: 2;
+    position: relative;
+}
+
+.career-card:hover .card-title {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.career-card:hover {
+    background-color: #6730DE;
+    color: #ffffff;
+    border: 1px solid #6730DE;
+}
+
+.career-card:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.card-description {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 2;
+    font-size: 0.95rem;
+}
+
+.career-card:hover .card-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+.career-card img {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s ease;
+}
+.career-card:hover img {
+    opacity: 0;
+    transform: translateY(0);
 }
 .footer-section{
     background-color: #6730DE;
@@ -524,10 +617,10 @@ header.sticky-top {
     );
     margin: 1rem 0;
 }
-.phone-link {
+.phone-link, .email-link {
     color: white;
     text-decoration: none;
 }
-.phone-link:hover {
+.phone-link:hover, .email-link:hover {
     color: white;
 }

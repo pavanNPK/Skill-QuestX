@@ -55,7 +55,6 @@ const transporter = nodemailer.createTransport({
 
 // Contact form route
 app.post("/contact", async (req, res) => {
-    console.log(req.body);
     const { name, email, message, phone } = sanitizeInput(req.body);
 
     try {
@@ -123,5 +122,5 @@ app.get('/', (req, res) => {
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Server running at ${process.env.APP_HOST || 'http://localhost'}:${port}`);
+    console.log(`Server running at ${process.env.APP_HOST || 'http://localhost/127.0.0.1'}:${port}`);
 });

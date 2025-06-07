@@ -271,42 +271,48 @@ const cardsPerPage = () => {
 
 function renderCourses() {
     const container = document.getElementById("courseCardsContainer");
-    container.innerHTML = "";
 
-    const count = cardsPerPage();
-    const start = courseSectionCount * count;
-    const end = start + count;
-    const visibleCourses = courseData.slice(start, end);
+    // Fade out container
+    container.style.opacity = "0";
 
-    visibleCourses.forEach((course, index) => {
-        const col = document.createElement("div");
-        col.className = `col-12 col-md-6 col-lg-4`;
+    setTimeout(() => {
+        container.innerHTML = "";
 
-        const card = document.createElement("div");
-        card.className = "course-card h-100 animate-slide-in"; // Animation class
+        const count = cardsPerPage();
+        const start = courseSectionCount * count;
+        const end = start + count;
+        const visibleCourses = courseData.slice(start, end);
 
-        card.innerHTML = `
-            <img src="${course.img}" alt="${course.type}" />
-            <h5 class="fw-bold">${course.type}</h5>
-            <p class="mb-0 small text-start">${course.text}</p>
-        `;
+        visibleCourses.forEach((course, index) => {
+            const col = document.createElement("div");
+            col.className = `col-12 col-md-6 col-lg-4`;
 
-        col.appendChild(card);
-        container.appendChild(col);
+            const card = document.createElement("div");
+            card.className = "course-card h-100"; // remove animation to avoid blinking
 
-        // Optional: staggered animation (delay per card)
-        card.style.animationDelay = `${index * 100}ms`;
-    });
+            card.innerHTML = `
+                <img src="${course.img}" alt="${course.type}" />
+                <h5 class="fw-bold">${course.type}</h5>
+                <p class="mb-0 small text-start">${course.text}</p>
+            `;
 
-    // Update arrows
-    leftCourseArrow.src = courseSectionCount === 0
-        ? "./assets/images/icons/left-arrow.svg"
-        : "./assets/images/icons/left-arrow-o.svg";
+            col.appendChild(card);
+            container.appendChild(col);
+        });
 
-    const totalPages = Math.ceil(courseData.length / count);
-    rightCourseArrow.src = courseSectionCount >= totalPages - 1
-        ? "./assets/images/icons/right-arrow.svg"
-        : "./assets/images/icons/right-arrow-o.svg";
+        // Fade back in container
+        container.style.opacity = "1";
+
+        // Update arrows
+        leftCourseArrow.src = courseSectionCount === 0
+            ? "./assets/images/icons/left-arrow.svg"
+            : "./assets/images/icons/left-arrow-o.svg";
+
+        const totalPages = Math.ceil(courseData.length / count);
+        rightCourseArrow.src = courseSectionCount >= totalPages - 1
+            ? "./assets/images/icons/right-arrow.svg"
+            : "./assets/images/icons/right-arrow-o.svg";
+    }, 300); // match CSS transition duration
 }
 
 function leftCoursesArrowClick() {
@@ -325,10 +331,16 @@ function rightCoursesArrowClick() {
 }
 
 // Re-render on resize
+let lastWidth = window.innerWidth;
+
 window.addEventListener("resize", () => {
-    courseSectionCount = 0; // Reset to first page
-    renderCourses();
+    if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        courseSectionCount = 0;
+        renderCourses();
+    }
 });
+
 
 // submit form
 const form = document.getElementById("contactForm");
@@ -373,6 +385,7 @@ function submitForm(name, email, message, phone) {
         .catch(error => {
             console.error("Error:", error)
             // Error message
+            disableSubmitButton.disabled = false;
             showToast(error);
         });
 }
