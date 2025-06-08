@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SkillQuestX – Online Technical Courses & Corporate Training</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -31,6 +31,13 @@
 
     <!-- Favicon -->
     <link rel="icon" href="./assets/images/core/favIcon.svg">
+
+    <!-- preload LCP image (optional, adjust file based on screen usage) -->
+    <link rel="preload" as="image" href="./assets/images/core/banner-md.avif" type="image/avif">
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="./assets/fonts/Sen-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fonts/Sen-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
@@ -63,7 +70,7 @@
 <div id="toast-container"></div>
 <!-- toast -->
 <!-- scroll to top button -->
-<button class="scroll-to-top" id="scrollToTop"></button>
+<button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top of page"></button>
 <!-- scroll to top button -->
 <!-- Header -->
 <header class="sticky-top bg-white border-bottom">
@@ -74,7 +81,7 @@
             </a>
 
             <!-- Custom Hamburger -->
-            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation menu">
                 <span class="navbar-toggler-icon">
                   <div></div>
                 </span>
@@ -151,15 +158,15 @@
             <div class="carousel-image col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 order-0 order-sm-0 order-md-0 order-lg-1 order-xl-1 text-sm-start text-start text-md-start text-lg-end text-xl-end">
                 <picture>
                     <!-- Tiny screens (up to 500.98px) -->
-                    <source srcset="./assets/images/core/banner-md.jpg" media="(max-width: 450.98px)">
+                    <source srcset="./assets/images/core/banner-md.avif" media="(max-width: 450.98px)" type="image/avif">
                     <!-- Small to medium screens (451px to 631px) -->
-                    <source srcset="./assets/images/core/banner.jpg" media="(min-width: 451px) and (max-width: 631px)">
+                    <source srcset="./assets/images/core/banner.avif" media="(min-width: 451px) and (max-width: 631px)" type="image/avif">
                     <!-- Small to medium screens (630px to 767.98px) -->
-                    <source srcset="./assets/images/core/banner-crop.jpg" media="(min-width: 630px) and (max-width: 767.98px)">
+                    <source srcset="./assets/images/core/banner-crop.avif" media="(min-width: 630px) and (max-width: 767.98px)" type="image/avif">
                     <!-- Medium to large screens (768px to 1199.98px) -->
-                    <source srcset="./assets/images/core/banner-md.jpg" media="(min-width: 768px) and (max-width: 1199.98px)">
+                    <source srcset="./assets/images/core/banner-md.avif" media="(min-width: 768px) and (max-width: 1199.98px)" type="image/avif">
                     <!-- Extra large screens (1200px and up) -->
-                    <img src="./assets/images/core/banner.jpg" alt="SkillQuestX banner showcasing technical courses" class="img-fluid" loading="lazy">
+                    <img src="./assets/images/core/banner.avif" alt="SkillQuestX banner showcasing technical courses" class="img-fluid" loading="lazy">
                 </picture>
             </div>
         </div>
@@ -169,7 +176,7 @@
     <div class="transform-section bg-black">
         <div class="transform-content row m-0">
             <div class="transform-image col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <img src="./assets/images/transform/transform.svg" alt="transform" class="img-fluid w-100" loading="lazy">
+                <img src="./assets/images/transform/transform.avif" alt="transform" class="img-fluid w-100" loading="lazy">
             </div>
             <div class="transform-text col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 d-flex flex-column justify-content-center px-4 pb-3 px-sm-4 pb-sm-3  pb-md-0  pb-lg-0  pb-xl-0">
                 <h4 class="mb-4 fw-bold text-white">At Skill QuestX, we transform potential into performance.</h4>
@@ -212,8 +219,8 @@
                     <span class="fw-bold text-white">What Sets Us Apart</span>
                 </h4>
                 <div>
-                    <img src="./assets/images/icons/left-arrow.svg" alt="left-arrow" id="setSectionLeftArrow" class="cursor-pointer img-fluid" onclick="leftSetSectionArrowClick()" loading="lazy">
-                    <img src="./assets/images/icons/right-arrow-o.svg" alt="right-arrow" id="setSectionRightArrow" class="cursor-pointer img-fluid" onclick="rightSetSectionArrowClick()" loading="lazy">
+                    <img src="./assets/images/icons/left-arrow.svg" alt="Previous image" id="setSectionLeftArrow" class="cursor-pointer img-fluid" onclick="leftSetSectionArrowClick()" loading="lazy" role="button" tabindex="0">
+                    <img src="./assets/images/icons/right-arrow-o.svg" alt="Next image" id="setSectionRightArrow" class="cursor-pointer img-fluid" onclick="rightSetSectionArrowClick()" loading="lazy" role="button" tabindex="0">
                 </div>
             </div>
             <div class="set-img-text">
@@ -319,8 +326,8 @@
                     <span class="fw-bold">Courses</span>
                 </h4>
                 <div>
-                    <img alt="left-arrow" id="courseLeftArrow" class="cursor-pointer" src="./assets/images/icons/left-arrow.svg" onclick="leftCoursesArrowClick()"  loading="lazy"/>
-                    <img alt="right-arrow" id="courseRightArrow" class="cursor-pointer" src="./assets/images/icons/right-arrow-o.svg" onclick="rightCoursesArrowClick()"  loading="lazy"/>
+                    <img alt="Previous courses" id="courseLeftArrow" class="cursor-pointer" src="./assets/images/icons/left-arrow.svg" onclick="leftCoursesArrowClick()" loading="lazy" role="button" tabindex="0"/>
+                    <img alt="Next courses" id="courseRightArrow" class="cursor-pointer" src="./assets/images/icons/right-arrow-o.svg" onclick="rightCoursesArrowClick()" loading="lazy" role="button" tabindex="0"/>
                 </div>
             </div>
 
@@ -346,28 +353,28 @@
                     <div class="corporate-card card">
                         <p class="fw-bold text-align-normal card-title">Custom LMS Access.</p>
                         <img src="./assets/images/icons/access.svg" alt="corporate" class="img-fluid" loading="lazy">
-                        <div class="card-description">Get 24/7 access to personalized learning modules tailored to your course and career goals.</div>
+                        <div class="card-description small">Get 24/7 access to personalized learning modules tailored to your course and career goals.</div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-3 d-flex">
                     <div class="corporate-card card">
                         <p class="fw-bold text-align-normal card-title">Project-Based Learning.</p>
                         <img src="./assets/images/icons/learning.svg" alt="corporate" class="img-fluid" loading="lazy">
-                        <div class="card-description">Build real-world skills with hands-on projects guided by expert mentors</div>
+                        <div class="card-description small">Build real-world skills with hands-on projects guided by expert mentors</div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-3 d-flex">
                     <div class="corporate-card card">
                         <p class="fw-bold text-align-normal card-title">Assessment & Certification.</p>
                         <img src="./assets/images/icons/assessment.svg" alt="corporate" class="img-fluid" loading="lazy">
-                        <div class="card-description">Validate your skills with industry-recognized certifications after course completion.</div>
+                        <div class="card-description small">Validate your skills with industry-recognized certifications after course completion.</div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-3 d-flex">
                     <div class="corporate-card card">
                         <p class="fw-bold text-align-normal card-title">Contact us for a free consult.</p>
                         <img src="./assets/images/icons/contact.svg" alt="corporate" class="img-fluid" loading="lazy">
-                        <div class="card-description">Book a free consultation to discuss your learning path and career roadmap</div>
+                        <div class="card-description small">Book a free consultation to discuss your learning path and career roadmap</div>
                     </div>
                 </div>
             </div>
@@ -388,35 +395,35 @@
                 <div class="career-card card">
                     <img src="./assets/images/icons/resume-support.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="card-title fw-bold text-align-normal">Resume Writing Support</p>
-                    <div class="card-description">Stand out to employers with a professionally crafted resume. We guide you in highlighting your skills, achievements, and career goals to make a lasting impression.</div>
+                    <div class="card-description small">Stand out to employers with a professionally crafted resume. We guide you in highlighting your skills, achievements, and career goals to make a lasting impression.</div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                 <div class="career-card card">
                     <img src="./assets/images/icons/mock-interview.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal card-title">Mock Interviews & Feedback</p>
-                    <div class="card-description">Gain confidence with simulated interviews led by industry experts. Receive personalized feedback to refine your answers and boost your interview performance.”</div>
+                    <div class="card-description small">Gain confidence with simulated interviews led by industry experts. Receive personalized feedback to refine your answers and boost your interview performance.”</div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                 <div class="career-card card">
                     <img src="./assets/images/icons/optimization.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal card-title">LinkedIn & GitHub Optimization</p>
-                    <div class="card-description">Strengthen your professional online presence with optimized LinkedIn and GitHub profiles. We help you showcase your skills, projects, and achievements effectively to attract recruiters.</div>
+                    <div class="card-description small">Strengthen your professional online presence with optimized LinkedIn and GitHub profiles. We help you showcase your skills, projects, and achievements effectively to attract recruiters.</div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                 <div class="career-card card">
                     <img src="./assets/images/icons/referrals.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal card-title">Interview Referrals (where applicable)</p>
-                    <div class="card-description">Connect with our network of industry partners and get referrals to potential interview opportunities, giving you an edge in today’s competitive job market.</div>
+                    <div class="card-description small">Connect with our network of industry partners and get referrals to potential interview opportunities, giving you an edge in today’s competitive job market.</div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                 <div class="career-card card">
                     <img src="./assets/images/icons/certification.svg" alt="career" class="img-fluid" loading="lazy">
                     <p class="fw-bold text-align-normal card-title">Certification Guidance</p>
-                    <div class="card-description">Navigate the certification landscape with ease. We help you choose the right certifications, prepare effectively, and understand how they can enhance your career prospects.</div>
+                    <div class="card-description small">Navigate the certification landscape with ease. We help you choose the right certifications, prepare effectively, and understand how they can enhance your career prospects.</div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
@@ -488,20 +495,20 @@
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 p-0">
                 <hr class="custom-dotted-hr d-block d-sm-block d-md-none d-lg-none d-xl-none">
                 <div>
-                    <h5 class="fw-bold m-0">REDEFINE</h5>
+                    <h4 class="fw-bold m-0">REDEFINE</h4>
                     <p class="small text-align-no-gap">Transform your knowledge and career perspective</p>
                 </div>
                 <div>
-                    <h5 class="fw-bold m-0">UPSKILL</h5>
+                    <h4 class="fw-bold m-0">UPSKILL</h4>
                     <p class="small text-align-no-gap">Gain modern, in-demand technical expertise</p>
                 </div>
                 <div>
-                    <h5 class="fw-bold m-0">SUCCEED</h5>
+                    <h4 class="fw-bold m-0">SUCCEED</h4>
                     <p class="small text-align-no-gap">Land your dream role or promotion</p>
                 </div>
                 <div class="p-0 pt-sm-3 pt-3 p-md-0 p-lg-0 p-xl-0">
                     <hr class="custom-dotted-hr">
-                    <h5 class="fw-bold m-0">CONTACT US</h5>
+                    <h4 class="fw-bold m-0">CONTACT US</h4>
                     <p class="small m-0 text-align-no-gap">
                         <a href="tel:+919391481020" class="phone-link">+91-9391481020</a> |
                         <a href="tel:+919666178974" class="phone-link">+91-9666178974</a>
@@ -526,7 +533,7 @@
     </div>
     <!-- end of footer section -->
 <!-- end of main content -->
-<script src="./lib/js/bootstrap.bundle.js"></script>
-<script src="./index.js"></script>
+<script src="./lib/js/bootstrap.bundle.js" defer></script>
+<script src="./index.js" defer></script>
 </body>
 </html>

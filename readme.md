@@ -152,7 +152,7 @@ scrollToTopButton.addEventListener("click", function () {
 #### What It Does:
 * Changes image source and heading text.
 * Highlights the active feature card.
-* Adds fade-in/fade-out animation effects for smooth transitions.
+* Adds hero/fade-out animation effects for smooth transitions.
 * Updates the index (setSectionCount) to track current item.
 * Updates left/right arrow states (active/inactive visuals).
 

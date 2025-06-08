@@ -1,10 +1,13 @@
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
-window.scrollTo(0, 0);
-// Also force scroll to top as early as possible
-document.documentElement.scrollTop = 0;
-document.body.scrollTop = 0;
+// Only scroll to top on actual page load, not on every script execution
+window.addEventListener('load', function() {
+    // Only scroll to top if it's a fresh page load (not back/forward navigation)
+    if (performance.navigation.type === performance.navigation.TYPE_NAVIGATE) {
+        window.scrollTo(0, 0);
+    }
+});
 // Toggle "open" class on hamburger click
 document.addEventListener("DOMContentLoaded", function () {
     const toggler = document.querySelector(".custom-toggler");
@@ -57,27 +60,27 @@ document.addEventListener("DOMContentLoaded", function () {
             return false;
         }
     });
-
-    // Optional: Detect DevTools and redirect or block
-    const element = new Image();
-    Object.defineProperty(element, 'id', {
-        get: function () {
-            // You can redirect or freeze here
-            window.location.replace("about:blank");
-        }
-    });
 });
 
 // Get the button
 let scrollToTopButton = document.getElementById("scrollToTop");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+// Improved scroll function with throttling for better mobile performance
+let scrollTimeout;
+window.addEventListener('scroll', function() {
+    // Throttle scroll events for better performance
+    if (!scrollTimeout) {
+        scrollTimeout = setTimeout(function() {
+            scrollFunction();
+            scrollTimeout = null;
+        }, 16); // ~60fps
+    }
+});
 
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         scrollToTopButton.style.display = "block";
-        scrollToTopButton.style.opacity = "100%";
+        scrollToTopButton.style.opacity = "1";
     } else {
         scrollToTopButton.style.display = "none";
         scrollToTopButton.style.opacity = "0";
@@ -85,9 +88,12 @@ function scrollFunction() {
 }
 
 // When the user clicks on the button, scroll to the top of the document
+// When the user clicks on the button, scroll to the top of the document
 scrollToTopButton.addEventListener("click", function() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
 //this is for navbar
 let disableScrollHighlight = false;
@@ -128,10 +134,23 @@ document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
         }
     });
 });
+
+// Improved scroll highlight with throttling
+let highlightTimeout;
 window.addEventListener("scroll", () => {
     if (disableScrollHighlight) return;
 
-    const offset = 85;
+    // Throttle for better mobile performance
+    if (!highlightTimeout) {
+        highlightTimeout = setTimeout(() => {
+            updateScrollHighlight();
+            highlightTimeout = null;
+        }, 50);
+    }
+});
+
+function updateScrollHighlight() {
+    const offset = window.innerWidth < 768 ? 60 : 85; // Better mobile offset
     const navSections = [
         'whoWeAreSection',
         'courseSection',
@@ -158,7 +177,8 @@ window.addEventListener("scroll", () => {
     });
 
     // Handle case when at bottom of page
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    const isAtBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 10);
+    if (isAtBottom) {
         currentId = navSections[navSections.length - 1];
     }
 
@@ -169,7 +189,8 @@ window.addEventListener("scroll", () => {
             link.classList.add("active");
         }
     });
-});
+}
+
 
 //this is for set section
 let setSectionCount = 0;
@@ -192,14 +213,14 @@ function loadSetSectionImg(type, text, index) {
     targetCard.classList.add("set-card-active");
 
     // Animate image fade-out
-    img.classList.remove("fade-in");
+    img.classList.remove("hero");
     img.classList.add("fade-out");
 
     // Wait for fade-out to complete before changing image and fading back in
     setTimeout(() => {
         img.src = `./assets/images/sets-us-apart/${type}.svg`;
         img.classList.remove("fade-out");
-        img.classList.add("fade-in");
+        img.classList.add("hero");
     }, 100); // Slightly less than the animation duration
 
     // Set heading text
@@ -271,6 +292,7 @@ const cardsPerPage = () => {
 
 function renderCourses() {
     const container = document.getElementById("courseCardsContainer");
+    if (!container) return;
 
     // Fade out container
     container.style.opacity = "0";
@@ -283,12 +305,12 @@ function renderCourses() {
         const end = start + count;
         const visibleCourses = courseData.slice(start, end);
 
-        visibleCourses.forEach((course, index) => {
+        visibleCourses.forEach((course) => {
             const col = document.createElement("div");
             col.className = `col-12 col-md-6 col-lg-4`;
 
             const card = document.createElement("div");
-            card.className = "course-card h-100"; // remove animation to avoid blinking
+            card.className = "course-card h-100";
 
             card.innerHTML = `
                 <img src="${course.img}" alt="${course.type}" />
@@ -304,15 +326,19 @@ function renderCourses() {
         container.style.opacity = "1";
 
         // Update arrows
-        leftCourseArrow.src = courseSectionCount === 0
-            ? "./assets/images/icons/left-arrow.svg"
-            : "./assets/images/icons/left-arrow-o.svg";
+        if (leftCourseArrow) {
+            leftCourseArrow.src = courseSectionCount === 0
+                ? "./assets/images/icons/left-arrow.svg"
+                : "./assets/images/icons/left-arrow-o.svg";
+        }
 
         const totalPages = Math.ceil(courseData.length / count);
-        rightCourseArrow.src = courseSectionCount >= totalPages - 1
-            ? "./assets/images/icons/right-arrow.svg"
-            : "./assets/images/icons/right-arrow-o.svg";
-    }, 300); // match CSS transition duration
+        if (rightCourseArrow) {
+            rightCourseArrow.src = courseSectionCount >= totalPages - 1
+                ? "./assets/images/icons/right-arrow.svg"
+                : "./assets/images/icons/right-arrow-o.svg";
+        }
+    }, 300);
 }
 
 function leftCoursesArrowClick() {
@@ -330,16 +356,64 @@ function rightCoursesArrowClick() {
     }
 }
 
-// Re-render on resize
+// Add to your JavaScript file
+function handleKeyPress(event, callback) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        callback();
+    }
+}
+
+// Add event listeners
+document.getElementById('setSectionLeftArrow').addEventListener('keydown', (e) => {
+    handleKeyPress(e, leftSetSectionArrowClick);
+});
+
+// Improved resize handling with debouncing
+let resizeTimeout;
 let lastWidth = window.innerWidth;
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth !== lastWidth) {
-        lastWidth = window.innerWidth;
-        courseSectionCount = 0;
-        renderCourses();
-    }
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (window.innerWidth !== lastWidth) {
+            lastWidth = window.innerWidth;
+            courseSectionCount = 0;
+            renderCourses();
+        }
+    }, 250); // Debounce resize events
 });
+
+// Add CSS to prevent viewport jumping on mobile
+const style = document.createElement('style');
+style.textContent = `
+    /* Prevent mobile viewport jumping */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* Improve form input behavior on mobile */
+    @media (max-width: 767px) {
+        input, textarea, select {
+            font-size: 16px !important; /* Prevents zoom on iOS */
+            transform: translateZ(0); /* Force hardware acceleration */
+        }
+        
+        .form-control:focus {
+            transform: translateZ(0);
+        }
+    }
+    
+    /* Smooth scroll for all scroll operations */
+    * {
+        scroll-behavior: smooth;
+    }
+`;
+document.head.appendChild(style);
 
 
 // submit form
