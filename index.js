@@ -1,6 +1,7 @@
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
+
 // Only scroll to top on actual page load, not on every script execution
 window.addEventListener('load', function() {
     // Only scroll to top if it's a fresh page load (not back/forward navigation)
@@ -8,6 +9,7 @@ window.addEventListener('load', function() {
         window.scrollTo(0, 0);
     }
 });
+
 // Toggle "open" class on hamburger click
 document.addEventListener("DOMContentLoaded", function () {
     const toggler = document.querySelector(".custom-toggler");
@@ -95,6 +97,7 @@ scrollToTopButton.addEventListener("click", function() {
         behavior: 'smooth'
     });
 });
+
 //this is for navbar
 let disableScrollHighlight = false;
 document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
@@ -191,7 +194,6 @@ function updateScrollHighlight() {
     });
 }
 
-
 //this is for set section
 let setSectionCount = 0;
 let data = {
@@ -200,6 +202,7 @@ let data = {
     "support": "Resume & Interview Support",
     "placements": "Job Placement Assistance"
 };
+
 let changesetSectionLeftImage = document.querySelector("#setSectionLeftArrow");
 let changesetSectionRightImage = document.querySelector("#setSectionRightArrow");
 function loadSetSectionImg(type, text, index) {
@@ -231,6 +234,7 @@ function loadSetSectionImg(type, text, index) {
     changesetSectionLeftImage.src = index === 0 ? "./assets/images/icons/left-arrow.svg" : "./assets/images/icons/left-arrow-o.svg";
     changesetSectionRightImage.src = index === 3 ? "./assets/images/icons/right-arrow.svg" : "./assets/images/icons/right-arrow-o.svg";
 }
+
 function leftSetSectionArrowClick() {
     if (setSectionCount > 0) {
         setSectionCount -= 1;
@@ -239,6 +243,7 @@ function leftSetSectionArrowClick() {
         loadSetSectionImg(Object.keys(data)[setSectionCount], Object.values(data)[setSectionCount], setSectionCount);
     }
 }
+
 function rightSetSectionArrowClick() {
     if (setSectionCount < 3) {
         setSectionCount += 1;
@@ -282,6 +287,7 @@ let courseData = [
         img: "./assets/images/courses/automation.svg"
     }
 ]
+
 let leftCourseArrow = document.querySelector("#courseLeftArrow");
 let rightCourseArrow = document.querySelector("#courseRightArrow");
 const cardsPerPage = () => {
@@ -463,6 +469,7 @@ function submitForm(name, email, message, phone) {
             showToast(error);
         });
 }
+
 function showToast(message, duration = 3000) {
     const container = document.getElementById("toast-container");
     const toast = document.createElement("div");
