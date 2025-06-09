@@ -224,3 +224,8 @@ scrollToTopButton.addEventListener("click", function () {
 > git commit -m "Stop tracking server/.env"
 > 
 > git push
+
+-----------------------------------------------------------------------------------
+
+> **Note:**
+> Host the Website on HOSTINGER.
