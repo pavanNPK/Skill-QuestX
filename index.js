@@ -221,7 +221,7 @@ function loadSetSectionImg(type, text, index) {
 
     // Wait for fade-out to complete before changing image and fading back in
     setTimeout(() => {
-        img.src = `./assets/images/sets-us-apart/${type}.svg`;
+        img.src = `./assets/images/sets-us-apart/${type}.avif`;
         img.classList.remove("fade-out");
         img.classList.add("hero");
     }, 100); // Slightly less than the animation duration
@@ -259,32 +259,32 @@ let courseData = [
     {
         type: "Cloud & DevOps",
         text: "AWS, Azure, Terraform, Docker, Kubernetes (With Linux / Windows)",
-        img: "./assets/images/courses/cloud.svg"
+        img: "./assets/images/courses/cloud.avif"
     },
     {
         type: "Software Development",
         text: "Full Stack - MEAN, MERN, Java, Python",
-        img: "./assets/images/courses/software-development.svg"
+        img: "./assets/images/courses/software-development.avif"
     },
     {
         type: "Data & Analytics",
         text: "Data Science, Power BI, AI/ML",
-        img: "./assets/images/courses/data-analysis.svg"
+        img: "./assets/images/courses/data-analysis.avif"
     },
     {
         type: "Service Management",
         text: "ServiceNow, ITIL, Incident Management",
-        img: "./assets/images/courses/service-management.svg"
+        img: "./assets/images/courses/service-management.avif"
     },
     {
         type: "ERP & CRM",
         text: "Salesforce, SAP FICO/MM/ABAP/HANA/COP",
-        img: "./assets/images/courses/erp-crm.svg"
+        img: "./assets/images/courses/erp-crm.avif"
     },
     {
         type: "Automation & QA",
         text: "Selenium, JMeter, Test Automation",
-        img: "./assets/images/courses/automation.svg"
+        img: "./assets/images/courses/automation.avif"
     }
 ]
 
@@ -319,7 +319,7 @@ function renderCourses() {
             card.className = "course-card h-100";
 
             card.innerHTML = `
-                <img src="${course.img}" alt="${course.type}" />
+                <img src="${course.img}" alt="${course.type}" class="img-fluid" loading="lazy"/>
                 <h5 class="fw-bold">${course.type}</h5>
                 <p class="mb-0 small text-start">${course.text}</p>
             `;
