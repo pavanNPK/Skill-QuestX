@@ -447,7 +447,7 @@ function submitForm(name, email, message, phone) {
     disableSubmitButton.disabled = true;
     // loading
     showToast("Please wait...");
-    fetch("http://localhost:3000/contact", {
+    fetch("https://api.skillquestx.com/contact", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

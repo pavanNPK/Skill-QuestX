@@ -114,13 +114,235 @@ app.post("/contact", async (req, res) => {
     }
 });
 
-// Default route
-app.get('/', (req, res) => {
-    res.send({ message: 'Server is running!' });
+// Default route with styled HTML response
+app.get('/welcome', (req, res) => {
+    const welcomeHTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome to SkillQuestX</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .welcome-container {
+                text-align: center;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                padding: 3rem 2rem;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                animation: fadeInUp 0.8s ease-out;
+                max-width: 500px;
+                width: 90%;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+                font-weight: bold;
+                background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: gradientShift 3s ease-in-out infinite;
+                margin-bottom: 1rem;
+            }
+
+            .welcome-text {
+                color: white;
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+                opacity: 0.9;
+            }
+
+            .subtitle {
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .quest-button {
+                background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                color: white;
+                border: none;
+                padding: 12px 30px;
+                border-radius: 25px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .quest-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                filter: brightness(1.1);
+            }
+
+            .particles {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+            }
+
+            .particle {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                animation: float 6s ease-in-out infinite;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes gradientShift {
+                0%, 100% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+            }
+
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-20px);
+                }
+            }
+
+            .skill-icons {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 1.5rem;
+                opacity: 0.7;
+            }
+
+            .skill-icon {
+                width: 30px;
+                height: 30px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 0.8rem;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="particles">
+            <div class="particle" style="width: 4px; height: 4px; top: 20%; left: 20%; animation-delay: 0s;"></div>
+            <div class="particle" style="width: 6px; height: 6px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+            <div class="particle" style="width: 3px; height: 3px; top: 80%; left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="width: 5px; height: 5px; top: 30%; left: 70%; animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="welcome-container">
+            <div class="logo">SkillQuestX</div>
+            <div class="welcome-text">REDEFINE | UPSKILL | SUCCEED</div>
+            <div class="subtitle">Welcome to SkillQuestX – Upskill for the Future</div>
+            <a href="https://skillquestx.com" class="quest-button" target="_blank">Start Your Quest</a>
+            
+            <div class="skill-icons">
+                <div class="skill-icon">💻</div>
+                <div class="skill-icon">🎯</div>
+                <div class="skill-icon">🚀</div>
+                <div class="skill-icon">⭐</div>
+            </div>
+        </div>
+
+        <script>
+            // Add some interactive sparkle effect
+            document.addEventListener('mousemove', (e) => {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'absolute';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.width = '4px';
+                sparkle.style.height = '4px';
+                sparkle.style.background = 'rgba(255, 255, 255, 0.8)';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '1000';
+                sparkle.style.animation = 'sparkle 1s ease-out forwards';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            });
+
+            // Add sparkle animation
+            const style = document.createElement('style');
+            style.textContent = \`
+                @keyframes sparkle {
+                    0% {
+                        transform: scale(0);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: scale(1);
+                        opacity: 0;
+                    }
+                }
+            \`;
+            document.head.appendChild(style);
+        </script>
+    </body>
+    </html>
+    `;
+
+    res.send(welcomeHTML);
 });
 
 // Start server
-const port = process.env.PORT || 3000;
+const port = process.env.APP_PORT || 3000;
+const host = process.env.APP_HOST || 'https://api.skillquestx.com';
+
 app.listen(port, () => {
-    console.log(`Server running at ${process.env.APP_HOST || 'http://localhost/127.0.0.1'}:${port}`);
+    console.log(`Server running at ${host}/welcome`);
 });
