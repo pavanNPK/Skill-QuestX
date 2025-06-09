@@ -71,7 +71,7 @@ app.post("/contact", async (req, res) => {
             html: `
               <div style="font-family: 'Segoe UI', sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 10px; overflow: hidden;">
                 <div style="background-color: #6730DE; padding: 20px; text-align: center;">  
-                 <img src="https://skillquestx.com/assets/images/core/banner.jpg" 
+                 <img src="https://skillquestx.com/assets/images/core/mailLogo.jpg" 
                        alt="SkillQuestX" 
                        width="auto" 
                        height="50" />                
