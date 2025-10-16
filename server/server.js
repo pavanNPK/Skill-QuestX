@@ -19,7 +19,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('../')); // Serve files from parent directory (project root)
 app.use(cors());
 app.use(helmet());
 app.use(compression());
