@@ -368,10 +368,11 @@ app.get('/welcome', (req, res) => {
     res.send(getWelcomePage());
 });
 
-// Start server
+// ==================== Start Server ====================
 const port = process.env.APP_PORT || 3000;
-const host = process.env.APP_HOST || 'https://api.trupathservices.com';
 
-app.listen(port, () => {
-    console.log(`Server running at ${host}/welcome`);
+// Always listen on all interfaces so Nginx can connect
+app.listen(port, "0.0.0.0", () => {
+  console.log(`✅ SkillQuestX backend running on port ${port}`);
 });
+
