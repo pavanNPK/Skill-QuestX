@@ -117,7 +117,7 @@ function getWelcomePage() {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome to TruPath Services</title>
+        <title>Welcome to SkillQuestX</title>
         <style>
             * {
                 margin: 0;
@@ -212,15 +212,15 @@ function getWelcomePage() {
                 animation: float 6s ease-in-out infinite;
             }
 
-            /* TruPath Icons (Themed for Medical Coding) */
-            .TruPath-icons {
+            /* SkillQuestX Icons (Themed for Medical Coding) */
+            .SkillQuestX-icons {
                 display: flex;
                 justify-content: center;
                 gap: 1rem;
                 margin-top: 2rem;
             }
 
-            .TruPath-icon {
+            .SkillQuestX-icon {
                 width: 40px;
                 height: 40px;
                 background: rgba(255, 255, 255, 0.12);
@@ -236,7 +236,7 @@ function getWelcomePage() {
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
 
-            .TruPath-icon:hover {
+            .SkillQuestX-icon:hover {
                 transform: scale(1.15);
                 box-shadow: 0 0 18px rgba(78, 205, 196, 0.8);
             }
@@ -284,7 +284,7 @@ function getWelcomePage() {
         </div>
 
         <div class="welcome-container">
-            <div class="logo">TruPath Services</div>
+            <div class="logo">SkillQuestX</div>
             <p class="tagline">Your Trusted Partner in Medical Coding & Documentation Excellence</p>
             <p class="welcome-text">
                 We specialize in accurate, compliant, and efficient medical coding and CDI solutions. 
@@ -292,16 +292,16 @@ function getWelcomePage() {
                 and help healthcare providers achieve optimal reimbursement.
             </p>
 
-            <a href="https://trupathservices.com" class="quest-button" target="_blank">
+            <a href="https://skillquestx.com" class="quest-button" target="_blank">
                 Discover Medical Coding Excellence
             </a>
 
-            <div class="TruPath-icons">
-                <div class="TruPath-icon" title="Medical Expertise">🩺</div>
-                <div class="TruPath-icon" title="Data Accuracy">💾</div>
-                <div class="TruPath-icon" title="Compliance">🔍</div>
-                <div class="TruPath-icon" title="Analytics">📊</div>
-                <div class="TruPath-icon" title="Certified Coders">🧠</div>
+            <div class="SkillQuestX-icons">
+                <div class="SkillQuestX-icon" title="Medical Expertise">🩺</div>
+                <div class="SkillQuestX-icon" title="Data Accuracy">💾</div>
+                <div class="SkillQuestX-icon" title="Compliance">🔍</div>
+                <div class="SkillQuestX-icon" title="Analytics">📊</div>
+                <div class="SkillQuestX-icon" title="Certified Coders">🧠</div>
             </div>
         </div>
 
@@ -376,4 +376,3 @@ const port = process.env.APP_PORT || 3000;
 app.listen(port, "0.0.0.0", () => {
   console.log(`✅ SkillQuestX backend running on port ${port}`);
 });
-

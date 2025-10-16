@@ -16,6 +16,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
+app.set('trust proxy', true);
 
 // Middleware
 app.use(express.json());
@@ -49,8 +50,8 @@ function getEmailTemplate(name, email, phone, message) {
         <div style="font-family: 'Segoe UI', Tahoma, sans-serif; color: #333; max-width: 640px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
             <!-- Header with Subtle Gradient -->
             <div style="background: linear-gradient(135deg, #051C3B, #163560); padding: 28px 20px; text-align: center; animation: fadeInHeader 1.5s ease forwards;">
-                <h1 style="color: #fff; margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.5px;">TruPath Services</h1>
-                <p style="color: #bcd0f0; font-size: 14px; margin: 6px 0 0;">Simplifying Medical Coding, Payment Integrity & CDI</p>
+                <h1 style="color: #fff; margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.5px;">SkillQuestX</h1>
+                <p style="color: #bcd0f0; font-size: 14px; margin: 6px 0 0;">Upskill for the Future</p>
             </div>
 
             <!-- Body Section -->
@@ -59,7 +60,7 @@ function getEmailTemplate(name, email, phone, message) {
                     <strong>New Inquiry Received</strong>
                 </p>
                 <p style="font-size: 15px; color: #444; margin: 0 0 18px;">
-                    A new contact form submission has been received via <strong>trupathservices.com</strong>. Below are the details:
+                    A new contact form submission has been received via <strong>skillquestx.com</strong>. Below are the details:
                 </p>
 
                 <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
@@ -84,16 +85,16 @@ function getEmailTemplate(name, email, phone, message) {
                 <div style="border-top: 1px solid #e5e7eb; margin: 24px 0; animation: fadeInDivider 2s ease;"></div>
 
                 <p style="font-size: 14px; color: #555; margin: 0;">
-                    Please review this inquiry and respond promptly. This submission may relate to coding audits, documentation improvement, or healthcare compliance.
+                    Please review this inquiry and respond promptly. This submission may relate to upskilling for the future.
                 </p>
             </div>
 
             <!-- Animated Footer -->
             <div style="background-color: #f9fafb; text-align: center; padding: 18px; color: #6b7280; font-size: 13px; border-top: 1px solid #e5e7eb; animation: fadeInFooter 2.2s ease;">
                 <p style="margin: 0;">
-                    Sent via <a href="https://trupathservices.com" style="color: #4ecdc4; text-decoration: none;">trupathservices.com</a>
+                    Sent via <a href="https://skillquestx.com" style="color: #4ecdc4; text-decoration: none;">skillquestx.com</a>
                 </p>
-                <p style="margin: 4px 0 0;">© ${new Date().getFullYear()} TruPath Services. All rights reserved.</p>
+                <p style="margin: 4px 0 0;">© ${new Date().getFullYear()} SkillQuestX. All rights reserved.</p>
             </div>
 
             <!-- Embedded Keyframe Animations -->
@@ -116,7 +117,7 @@ function getWelcomePage() {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome to TruPath Services</title>
+        <title>Welcome to SkillQuestX</title>
         <style>
             * {
                 margin: 0;
@@ -211,15 +212,15 @@ function getWelcomePage() {
                 animation: float 6s ease-in-out infinite;
             }
 
-            /* TruPath Icons (Themed for Medical Coding) */
-            .TruPath-icons {
+            /* SkillQuestX Icons (Themed for Medical Coding) */
+            .SkillQuestX-icons {
                 display: flex;
                 justify-content: center;
                 gap: 1rem;
                 margin-top: 2rem;
             }
 
-            .TruPath-icon {
+            .SkillQuestX-icon {
                 width: 40px;
                 height: 40px;
                 background: rgba(255, 255, 255, 0.12);
@@ -235,7 +236,7 @@ function getWelcomePage() {
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
 
-            .TruPath-icon:hover {
+            .SkillQuestX-icon:hover {
                 transform: scale(1.15);
                 box-shadow: 0 0 18px rgba(78, 205, 196, 0.8);
             }
@@ -283,7 +284,7 @@ function getWelcomePage() {
         </div>
 
         <div class="welcome-container">
-            <div class="logo">TruPath Services</div>
+            <div class="logo">SkillQuestX</div>
             <p class="tagline">Your Trusted Partner in Medical Coding & Documentation Excellence</p>
             <p class="welcome-text">
                 We specialize in accurate, compliant, and efficient medical coding and CDI solutions. 
@@ -291,16 +292,16 @@ function getWelcomePage() {
                 and help healthcare providers achieve optimal reimbursement.
             </p>
 
-            <a href="https://trupathservices.com" class="quest-button" target="_blank">
+            <a href="https://skillquestx.com" class="quest-button" target="_blank">
                 Discover Medical Coding Excellence
             </a>
 
-            <div class="TruPath-icons">
-                <div class="TruPath-icon" title="Medical Expertise">🩺</div>
-                <div class="TruPath-icon" title="Data Accuracy">💾</div>
-                <div class="TruPath-icon" title="Compliance">🔍</div>
-                <div class="TruPath-icon" title="Analytics">📊</div>
-                <div class="TruPath-icon" title="Certified Coders">🧠</div>
+            <div class="SkillQuestX-icons">
+                <div class="SkillQuestX-icon" title="Medical Expertise">🩺</div>
+                <div class="SkillQuestX-icon" title="Data Accuracy">💾</div>
+                <div class="SkillQuestX-icon" title="Compliance">🔍</div>
+                <div class="SkillQuestX-icon" title="Analytics">📊</div>
+                <div class="SkillQuestX-icon" title="Certified Coders">🧠</div>
             </div>
         </div>
 
@@ -343,7 +344,7 @@ app.post("/contact", async (req, res) => {
 
     try {
         await transporter.sendMail({
-            from: `"TruPath Services Contact Form" <${process.env.MAIL_USER}>`,
+            from: `"SkillQuestX Contact Form" <${process.env.MAIL_USER}>`,
             to: process.env.MAIL_USER,
             replyTo: `${name} <${email}>`,
             subject: "New Contact Form Submission",
@@ -375,4 +376,3 @@ const port = process.env.APP_PORT || 3000;
 app.listen(port, "0.0.0.0", () => {
   console.log(`✅ SkillQuestX backend running on port ${port}`);
 });
-
