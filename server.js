@@ -16,6 +16,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
+app.set('trust proxy', true);
 
 // Middleware
 app.use(express.json());
