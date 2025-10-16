@@ -50,8 +50,8 @@ function getEmailTemplate(name, email, phone, message) {
         <div style="font-family: 'Segoe UI', Tahoma, sans-serif; color: #333; max-width: 640px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
             <!-- Header with Subtle Gradient -->
             <div style="background: linear-gradient(135deg, #051C3B, #163560); padding: 28px 20px; text-align: center; animation: fadeInHeader 1.5s ease forwards;">
-                <h1 style="color: #fff; margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.5px;">TruPath Services</h1>
-                <p style="color: #bcd0f0; font-size: 14px; margin: 6px 0 0;">Simplifying Medical Coding, Payment Integrity & CDI</p>
+                <h1 style="color: #fff; margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.5px;">SkillQuestX</h1>
+                <p style="color: #bcd0f0; font-size: 14px; margin: 6px 0 0;">Upskill for the Future</p>
             </div>
 
             <!-- Body Section -->
@@ -60,7 +60,7 @@ function getEmailTemplate(name, email, phone, message) {
                     <strong>New Inquiry Received</strong>
                 </p>
                 <p style="font-size: 15px; color: #444; margin: 0 0 18px;">
-                    A new contact form submission has been received via <strong>trupathservices.com</strong>. Below are the details:
+                    A new contact form submission has been received via <strong>skillquestx.com</strong>. Below are the details:
                 </p>
 
                 <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
@@ -85,16 +85,16 @@ function getEmailTemplate(name, email, phone, message) {
                 <div style="border-top: 1px solid #e5e7eb; margin: 24px 0; animation: fadeInDivider 2s ease;"></div>
 
                 <p style="font-size: 14px; color: #555; margin: 0;">
-                    Please review this inquiry and respond promptly. This submission may relate to coding audits, documentation improvement, or healthcare compliance.
+                    Please review this inquiry and respond promptly. This submission may relate to upskilling for the future.
                 </p>
             </div>
 
             <!-- Animated Footer -->
             <div style="background-color: #f9fafb; text-align: center; padding: 18px; color: #6b7280; font-size: 13px; border-top: 1px solid #e5e7eb; animation: fadeInFooter 2.2s ease;">
                 <p style="margin: 0;">
-                    Sent via <a href="https://trupathservices.com" style="color: #4ecdc4; text-decoration: none;">trupathservices.com</a>
+                    Sent via <a href="https://skillquestx.com" style="color: #4ecdc4; text-decoration: none;">skillquestx.com</a>
                 </p>
-                <p style="margin: 4px 0 0;">© ${new Date().getFullYear()} TruPath Services. All rights reserved.</p>
+                <p style="margin: 4px 0 0;">© ${new Date().getFullYear()} SkillQuestX. All rights reserved.</p>
             </div>
 
             <!-- Embedded Keyframe Animations -->
@@ -344,7 +344,7 @@ app.post("/contact", async (req, res) => {
 
     try {
         await transporter.sendMail({
-            from: `"TruPath Services Contact Form" <${process.env.MAIL_USER}>`,
+            from: `"SkillQuestX Contact Form" <${process.env.MAIL_USER}>`,
             to: process.env.MAIL_USER,
             replyTo: `${name} <${email}>`,
             subject: "New Contact Form Submission",
