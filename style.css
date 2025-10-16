@@ -629,3 +629,118 @@ header.sticky-top {
 .phone-link:hover, .email-link:hover {
     color: white;
 }
+/* ===== TruPath Promo Banner ===== */
+.sticky-banner {
+  position: sticky;
+  top: 60px; /* Adjust if your header height differs */
+  z-index: 999;
+}
+
+.promo-banner {
+  background: linear-gradient(90deg, #6730DE, #8e5ffb);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.promo-content {
+  display: inline-block;
+  animation: promo-scroll 20s linear infinite;
+}
+
+.promo-link {
+  color: #FFD700;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.promo-link:hover {
+  text-decoration: underline;
+}
+
+.promo-email {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Scrolling animation */
+@keyframes promo-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Mobile responsive - stop scrolling for small screens */
+@media (max-width: 768px) {
+  .promo-content {
+    animation: none;
+    white-space: normal;
+    display: block;
+  }
+}
+/* ===== TruPath Promo Banner ===== */
+.sticky-banner {
+    position: sticky;
+    top: 60px; /* adjust if header height differs */
+    z-index: 999;
+  }
+  
+  .promo-banner {
+    background: linear-gradient(90deg, #6730DE, #8e5ffb);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .promo-content {
+    display: inline-block;
+    animation: promo-scroll 20s linear infinite;
+  }
+  
+  .promo-link {
+    color: #FFD700;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .promo-link:hover {
+    text-decoration: underline;
+  }
+  
+  .promo-email {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  
+  /* Scrolling animation */
+  @keyframes promo-scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  /* Mobile responsive - stop scroll and adjust font size */
+  @media (max-width: 768px) {
+    .promo-content {
+      animation: none;
+      white-space: normal;
+      display: block;
+    }
+    .promo-banner {
+      font-size: 0.6rem; /* 👈 smaller font for mobile */
+      padding: 0.4rem 0.8rem;
+    }
+  }
+  
